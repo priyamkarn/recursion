@@ -1,0 +1,16 @@
+int LCS(string s1, string s2, int m, int n) {
+    if (m == 0 || n == 0) {
+        return 0;
+    }
+    int len=0;
+    if (s1[m-1] == s2[n-1]) {
+        len= 1 + LCS(s1, s2, m-1, n-1);
+    }
+        int op2=max(LCS(s1, s2, m-1, n), LCS(s1, s2, m, n-1));
+        return max(len,op2);
+}
+    int lcs(int x, int y, string s1, string s2)
+    {
+        // your code here
+        return LCS(s1,s2,x,y);
+    }
