@@ -1,0 +1,37 @@
+Given an array arr[] of size N, check if it can be partitioned into two parts such that the sum of elements in both parts is the same.
+
+logic=subset sum problem +(for dividing total sum must be even no)
+bool solve(int arr[], int sum,int n)
+{
+    if(sum==0)
+    {
+        return true;
+    }
+    if(n==0 || sum<0)
+    {
+        return false;
+    }
+    if(arr[n-1]>sum)
+    {
+        return solve(arr,sum,n-1);
+    }
+    int op1=solve(arr,sum-arr[n-1],n-1);
+    int op2=solve(arr,sum,n-1);
+    return op1 || op2;
+    
+}
+    int equalPartition(int N, int arr[])
+    {
+        // code here
+        int sum=0;
+        for(int i=0;i<N;i++)
+        {
+            sum+=arr[i];
+        }
+        if((sum%2)!=0)
+        {
+            return false;
+        }
+        return solve(arr,sum/2,N);
+        
+    }
