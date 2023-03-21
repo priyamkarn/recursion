@@ -5,18 +5,16 @@ int solve(int s[],int i,int n, int prev)
     {
         return 0;
     }
+    int len=0;
     if(s[i]>s[prev] || prev==-1)
     {
-        return 1+solve(s,i+1,n,i);
+        len=max(len,1+solve(s,i+1,n,i));
     }
-    else
-    {
-        return solve(s,i+1,n,prev);
-    }
+    int op2=solve(s,i+1,n,prev);
+    return max(len,op2);
 }
     int longestSubsequence(int n, int a[])
     {
        // your code here
        return solve(a,0,n,-1);
     }
-};
