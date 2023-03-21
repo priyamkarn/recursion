@@ -1,0 +1,24 @@
+Given an integer array coins[ ] of size N representing different denominations of currency and an integer sum, 
+find the number of ways you can make sum by using different combinations from coins[ ].  
+Note: Assume that you have an infinite supply of each type of coin. 
+
+
+long long int count(int coins[], int N, int sum) {
+
+        // code here.
+        if(sum==0)
+        {
+            return 1;
+        }
+        if(N<=0 ||sum<0)
+        {
+            return 0;
+        }
+       if(coins[N-1]>sum)
+        {
+            return count(coins,N-1,sum);
+        }
+        int op1=count(coins,N,sum-coins[N-1]);
+        int op2=count(coins,N-1,sum);
+        return op1+op2;
+    }
