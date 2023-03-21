@@ -1,0 +1,21 @@
+//if duplicate value is allowed dont change index place when we include.
+int solve(int w,int wt[],int val[],int n)
+    {
+        if(n==0 ||w==0)
+        {
+            return 0;
+        }
+        if(wt[n-1]>w)
+        {
+            return solve(w,wt,val,n-1);
+        }
+        
+        int op1=val[n-1]+solve(w-wt[n-1],wt,val,n);
+        int op2=solve(w,wt,val,n-1);
+        return max(op1,op2);
+    }
+    int knapSack(int N, int W, int val[], int wt[])
+    {
+        // code here
+         return solve(W,wt,val,N);
+    }
