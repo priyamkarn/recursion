@@ -1,0 +1,22 @@
+Given an array of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum. 
+
+bool solve(vector<int>arr, int sum,int n)
+{
+    if(sum==0)
+    {
+        return true;
+    }
+    if(n==0 || sum<0)
+    {
+        return false;
+    }
+    int op1=solve(arr,sum-arr[n-1],n-1);
+    int op2=solve(arr,sum,n-1);
+    return op1 || op2;
+    
+}
+    bool isSubsetSum(vector<int>arr, int sum){
+        // code here 
+        int n=arr.size();
+        return solve(arr,sum,n);
+    }
