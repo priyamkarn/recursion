@@ -1,0 +1,27 @@
+int solve(string &S1, string &S2, int n, int m)
+    {
+        if(m==0 || n==0)
+        {
+            return 0;
+        }
+        int count=0;
+        
+        int i=n-1,j=m-1;
+        
+        while(i>=0 && j>=0 && S1[i]==S2[j])
+        {
+            i-=1;
+            j-=1;
+            count+=1;
+        }
+        
+        int op1=solve(S1,S2,n-1,m);
+        int op2=solve(S1,S2,n,m-1);
+        int excl = max(op1,op2);
+        return max(count,excl);
+    }
+    int longestCommonSubstr (string &S1, string &S2, int n, int m)
+    {
+    
+        return solve(S1,S2,n,m);
+    }
