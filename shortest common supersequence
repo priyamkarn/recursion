@@ -1,0 +1,4 @@
+n+m -lcs
+
+To form the shortest common supersequence, we need to concatenate the characters of A and B in such a way that all the characters of A and B are present, 
+and the LCS is only present once.
