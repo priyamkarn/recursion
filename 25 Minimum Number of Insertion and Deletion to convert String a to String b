@@ -1,0 +1,33 @@
+class Solution{
+		
+
+	public:
+  1.update + delete
+	int solve(string A, string B, int m, int n) {
+    if (m == 0 || n == 0) {
+        return m + n;
+    }
+
+    if (A[m - 1] == B[n - 1]) {
+        return solve(A, B, m - 1, n - 1);
+    }
+    else {
+        return 1 + min(solve(A, B, m - 1, n), 
+                       solve(A, B, m, n - 1));
+    }
+}
+2.replacement also
+
+	int solve(string A, string B, int m, int n) {
+    if (m == 0 || n == 0) {
+        return m + n;
+    }
+
+    if (A[m - 1] == B[n - 1]) {
+        return solve(A, B, m - 1, n - 1);
+    }
+    else {
+        return 1 + min(min(solve(A, B, m - 1, n), 
+                       solve(A, B, m, n - 1)), 
+                       solve(A, B, m - 1, n - 1));
+    }
