@@ -1,0 +1,25 @@
+int dfs(vector<int>& nums , int coins , int i , int n){
+        if(coins <= 0){
+            return 0;
+        }
+        if(i == n-1){
+            if(nums[i] <= coins){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+        int can = 0 , cant = 0;
+        if(nums[i] <= coins){
+            can = 1 + dfs(nums , coins - nums[i] , i + 1 , n);
+        }
+        cant = dfs(nums , coins , i + 1 , n);
+        return max(can , cant);
+    }
+    int maxIceCream(vector<int>& costs, int coins) {
+        int n = costs.size();
+        sort(costs.begin() , costs.end());
+        return dfs(costs , coins , 0 , n);
+    }
+};
